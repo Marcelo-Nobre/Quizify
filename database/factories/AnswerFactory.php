@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,11 @@ class AnswerFactory extends Factory
      */
     public function definition(): array
     {
+        $question_id = Question::pluck('id')->toArray();
         return [
             'resposta' => $this->faker->boolean,
+            'question_id' => $this->faker->randomElement($question_id),
+
         ];
     }
 }

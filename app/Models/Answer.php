@@ -9,11 +9,10 @@ use App\Models\Question;
 class Answer extends Model
 {
     use HasFactory;
-    //protected $fillable
 
-    public function answer()
+    public function question()
     {
-        return $this->hasOne(Question::class);
+        return $this->belongsTo(Question::class);
     }
 
 }

@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\QuizController;
-
+use App\Http\Controllers\Web\QuizController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,12 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
-    Route::get('quiz', function (){
-        return view('CreateQuiz');
-    })->name('quiz');
-
-
+Route::get('quiz/{quiz}', [QuizController::class, 'show'])
+    ->name('quiz')
+    ->where('quiz', '[0-9]*');
 
 require __DIR__.'/auth.php';
+require_once __DIR__ . '/admin.php';

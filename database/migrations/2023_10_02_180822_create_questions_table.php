@@ -17,7 +17,12 @@ return new class extends Migration
             $table->string('pergunta');
             $table->string('description');
             $table->boolean('optional');
+            $table->unsignedBigInteger('quiz_id');
+            $table->foreign('quiz_id')->references('id')->on('quizzes');
+
         });
+
+
     }
 
     /**
@@ -25,6 +30,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::create('questions', function (Blueprint $table) {
+            $table->dropForeign('questions_quiz_id_foreign'); //tabela_Chaveforeign_foreign
+            $table->dropColumn('quiz_id');
+        });
+
         Schema::dropIfExists('questions');
     }
 };

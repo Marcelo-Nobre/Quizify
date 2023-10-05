@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name_participant');
             $table->string('description');
         });
+
+
     }
 
     /**

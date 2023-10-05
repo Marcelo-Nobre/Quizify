@@ -14,6 +14,7 @@
 <div class="container">
     <h1>Quiz</h1>
     <form action="">
+        @csrf
         <div class="name-quiz">
             <label for="name-quiz">Nome do Quiz</label>
             <input type="text" name="" id="name-quiz" placeholder="Digite o nome do Quiz">
@@ -30,7 +31,7 @@
         <div class="horizontal-line"></div>
 
         <h1>Pergunta</h1>
-        <hr>
+{{--        <hr>--}}
 
 
         <div class="question">

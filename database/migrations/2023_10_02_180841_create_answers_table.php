@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('resposta');
+            $table->unsignedBigInteger('question_id');
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+
         });
     }
 
@@ -23,6 +26,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::create('answers', function (Blueprint $table) {
+            $table->dropForeign('answers_question_id_foreign'); //tabela_Chaveforeign_foreign
+            $table->dropColumn('question_id');
+        });
         Schema::dropIfExists('answers');
     }
 };
