@@ -13,8 +13,9 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $data = Quiz::all();
-        dd($data);
+        $quizes = Quiz::all();
+
+        return view('dashboard', compact('quizes'));
     }
 
     /**
