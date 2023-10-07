@@ -15,9 +15,7 @@ class QuizController extends Controller
     {
         $quiz = Quiz::where('id', $id,)->firstOrFail();
 
-        return view('web.quiz.show', [
-            'quiz' => $quiz,
-        ]);
+        return view('web.quiz.show', compact('quiz'));
     }
 
     // public function show()
